@@ -86,7 +86,7 @@ console.assert(
 function shortest(str) {
   if (isString(str)) {
     if (str.trim() === "") return "";
-    const split = str.split(" ");
+    const split = str.trim().split(" ");
     let shortest = split[0];
     for (let i = 1; i < split.length; i++) {
       if (split[i].length < shortest.length) {
@@ -225,35 +225,37 @@ console.assert(
 // Leiðbeint ferli
 
 function start() {
-  alert(
-    "Velkomin í setningagreininn, sláðu inn streng í boxið að neðan eða veldu Cancel til að hætta við"
-  );
+  do {
+    alert(
+      "Velkomin í setningagreininn, sláðu inn streng til að fá greiningu"
+    );
 
-  const str = prompt("Skrifa inntak:");
+    const str = prompt("Skrifa inntak:");
 
-  if (str === null || str.trim() === "" || str === "Cancel") {
-    return;
-  }
+    if (str === null || str.trim() === "" || str === "Cancel") {
+      return;
+    }
 
-  const longestWord = longest(str);
-  const shortestWord = shortest(str);
-  const reversedStr = reverse(str);
-  const vowelCount = vowels(str);
-  const consonantsCount = consonants(str);
-  const isPalindrome = palindrome(str);
+    const longestWord = longest(str);
+    const shortestWord = shortest(str);
+    const reversedStr = reverse(str);
+    const vowelCount = vowels(str);
+    const consonantsCount = consonants(str);
+    const isPalindrome = palindrome(str);
 
-  const result = `
-  Lengsta orðið: ${longestWord}
-  Stysta orðið: ${shortestWord}
-  Fjöldi sérhljóða: ${vowelCount}
-  Fjöldi samhljóða: ${consonantsCount}
-  Er strengur palindrome: ${isPalindrome}
-  Öfugsnúinn strengur: ${reversedStr}
-  `;
+    const result = `
+    Lengsta orðið: ${longestWord}
+    Stysta orðið: ${shortestWord}
+    Fjöldi sérhljóða: ${vowelCount}
+    Fjöldi samhljóða: ${consonantsCount}
+    Er strengur palindrome: ${isPalindrome}
+    Öfugsnúinn strengur: ${reversedStr}
+    `;
 
-  alert(result);
+    alert(result);
 
-  if (confirm("Viltu gera aftur?")) {
-    start();
-  }
+    if (confirm("Viltu gera aftur?")) {
+      start();
+    }
+  } while (confirm("Viltu gera aftur?"));
 }
